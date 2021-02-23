@@ -1,9 +1,9 @@
 import React from "react";
-// import { Container } from "react-bootstrap";
+import { Container, Form, Button } from "react-bootstrap";
 import TodoItems from "./TodoItems";
-import "./App.css";
+import "./TodoList.css";
 
-class App extends React.Component {
+class TodoList extends React.Component {
   constructor(props) {
     super(props);
 
@@ -48,17 +48,17 @@ class App extends React.Component {
 
   render() {
     return (
-      <div className="todoListMain">
+      <Container className="todoListMain">
         <div className="header">
-          <form onSubmit={this.addItem}>
-            <input ref={(a) => (this._inputElement = a)} placeholder="enter task"></input>
-            <button type="submit">add</button>
-          </form>
+          <Form inline onSubmit={this.addItem}>
+            <Form.Control type="text" ref={(a) => (this._inputElement = a)} placeholder="enter task"></Form.Control>
+            <Button type="submit">add</Button>
+          </Form>
         </div>
-        <TodoItems entries={this.state.items} delete={this.deleteItem} />
-      </div>
+        <TodoItems entries={this.state.items} delete={this.deleteItem} id="todoList"/>
+      </Container>
     );
   }
 }
 
-export default App;
+export default TodoList;

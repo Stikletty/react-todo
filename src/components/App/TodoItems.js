@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { ListGroup, Button } from "react-bootstrap";
 
 class TodoItems extends Component {
   constructor(props) {
@@ -8,9 +9,10 @@ class TodoItems extends Component {
   }
   createTasks(item) {
     return (
-      <li onClick={() => this.delete(item.key)} key={item.key}>
+      <ListGroup.Item as="li" key={item.key}>
         {item.text}
-      </li>
+        <Button class="text-align-right"onClick={() => this.delete(item.key)}>Delete</Button>
+      </ListGroup.Item>
     );
   }
 
@@ -21,7 +23,11 @@ class TodoItems extends Component {
     var todoEntries = this.props.entries;
     var listItems = todoEntries.map(this.createTasks);
 
-    return <ul className="theList">{listItems}</ul>;
+    return (
+      <ListGroup as="ul">
+        {listItems}
+      </ListGroup>
+    );
   }
 }
 
