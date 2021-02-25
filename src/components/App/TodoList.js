@@ -1,14 +1,15 @@
 import React from "react";
-// import { Container } from "react-bootstrap";
+import { Container, Form, Button } from "react-bootstrap";
 import TodoItems from "./TodoItems";
-import "./App.css";
+import "./TodoList.css";
 
-class App extends React.Component {
+class TodoList extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
       items: [],
+      listItemsCount: 0,
     };
 
     this.addItem = this.addItem.bind(this);
@@ -31,7 +32,7 @@ class App extends React.Component {
       this._inputElement.value = "";
     }
 
-    console.log(this.state.items);
+    // console.log(this.state.items);
 
     e.preventDefault();
   }
@@ -47,18 +48,22 @@ class App extends React.Component {
   }
 
   render() {
+    const buttonStyle = {};
+
     return (
-      <div className="todoListMain">
-        <div className="header">
-          <form onSubmit={this.addItem}>
-            <input ref={(a) => (this._inputElement = a)} placeholder="enter task"></input>
-            <button type="submit">add</button>
-          </form>
-        </div>
+      <Container id="todoListMain">
+        <Form className="d-flex align-items-center justify-content-between" onSubmit={this.addItem}>
+          <Form.Label>Task: </Form.Label>
+          <Form.Control autoFocus className="m-2" type="text" ref={(a) => (this._inputElement = a)} placeholder="Enter task" required></Form.Control>
+          <Button className="text-nowrap" type="submit" style={buttonStyle}>
+            Add New Task
+          </Button>
+        </Form>
+        <small className="d-flex flex-row-reverse text-muted">Currently {this.state.items.length} task(s) in list.</small>
         <TodoItems entries={this.state.items} delete={this.deleteItem} />
-      </div>
+      </Container>
     );
   }
 }
 
-export default App;
+export default TodoList;

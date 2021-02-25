@@ -1,0 +1,28 @@
+#todoListMain {
+  background-color: lightseagreen;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  min-height: 80vh;
+  padding: 1em;
+}
+
+#taskText {
+  margin: 0.1em;
+  padding: 0.2em;
+}
+
+#todoListMain ul > li:hover {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  margin: -0.05em;
+  padding: -0.1em;
+}
+
+.hr {
+  /* border: 1px solid rgba(0, 0, 0, 0.4);
+  border-radius: 3px; */
+
+  border: none;
+  height: 1px;
+  /* Set the hr color */
+  color: rgba(0, 0, 0, 0.4); /* old IE */
+  background-color: rgba(0, 0, 0, 0.4); /* Modern Browsers */
+}
